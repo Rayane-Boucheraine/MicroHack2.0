@@ -4,7 +4,7 @@ import Image from 'next/image';
 const Workers = () => {
   return (
     <>
-      {Employers.map((employ) => {
+      {Employers.map((employ, index) => {
         return (
           <li key={index} className="flex justify-between items-center bg-[#FFFFFF] px-[30px] py-[16px] mb-[10px] rounded-[16px]">
             <span className="flex items-center w-[200px] text-center">
