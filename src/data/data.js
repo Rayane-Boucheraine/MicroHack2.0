@@ -3,10 +3,12 @@ import tasks from "../../public/Aside/tasks.svg";
 import employers from "../../public/Aside/employers.svg";
 import problems from "../../public/Aside/problems.svg";
 import help from "../../public/Aside/help.svg";
-import Samy from "../../public/Header/human.svg"
-import Samy1 from "../../public/Header/human1.svg"
-import Samy2 from "../../public/Header/human2.svg"
-import {FaStar} from 'react-icons/fa'
+import Samy from "../../public/Header/human.svg";
+import Samy1 from "../../public/Header/human1.svg";
+import Samy2 from "../../public/Header/human2.svg";
+import { FaStar } from "react-icons/fa";
+
+export const BACKEND_URL = "http://localhost:8000";
 
 export const links1 = [
   {
@@ -155,8 +157,6 @@ export const workers = [
     status: "Free",
   },
 ];
-
-
 
 export const Employers = [
   {

@@ -6,11 +6,13 @@ import { useQuery } from "react-query";
 import { useQueryClient } from "react-query";
 
 const AddTask = ({ show, closeShow }) => {
+  const token = localStorage.getItem("access");
+  console.log(token);
   const [name, setName] = useState("");
   const [status, setStatus] = useState("Urgent");
   const [job, setJob] = useState("Plomber");
   const [workers, setWorkers] = useState("");
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const {
     isLoading,
     error,
@@ -32,16 +34,20 @@ const AddTask = ({ show, closeShow }) => {
           <form className="flex flex-col gap-6">
             <input
               type="text"
-              name="text"
-              id="text"
+              name="name"
+              id="name"
               className="bg-[#D9D9D9] rounded-[10px] py-[10px] px-[16px] placeholder:text-[#6B6B6B] outline-none"
               placeholder="Write the task..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <div className="flex justify-between">
               <select
                 name="status"
                 id="status"
                 className="bg-[#D9D9D9] w-[46%] px-[16px] py-[6px] rounded-[10px]"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="Urgent">Urgent</option>
                 <option value="Moderete">Moderete</option>
@@ -58,10 +64,9 @@ const AddTask = ({ show, closeShow }) => {
                 <option value="Generale">Generale</option>
               </select>
             </div>
-            {/* <label htmlFor="">Choose a worker to solve it</label>
-            <label htmlFor="">Choose a worker to solve it: </label>
+            <label htmlFor="">Choose a worker to solve it</label>
             <ul className="grid grid-cols-2	gap-[10px]">
-              {workersData?.employers?.map((worker, index) => {
+              {[].map((worker, index) => {
                 return (
                   <li
                     key={index}
@@ -73,7 +78,7 @@ const AddTask = ({ show, closeShow }) => {
                     />
                     <div className="flex flex-col">
                       <span className=" font-semibold text-[13px]">
-                        {worker.name} haha
+                        {worker.name}
                       </span>
                       <span className="text-[10px] text-[#FE7F26]">
                         {worker.status}
@@ -85,7 +90,7 @@ const AddTask = ({ show, closeShow }) => {
             </ul>
             <button className="rounded-[20px] bg-[#F1F1F1] text-[#6B6B6B] py-[8px] text-[#141414] font-medium text-[14px]">
               Auto choose best fit
-            </button> */}
+            </button>
             <button
               className="rounded-[20px] bg-[#FE7F26] py-[8px] text-[14px]"
               onClick={(e) => {
@@ -106,7 +111,7 @@ const AddTask = ({ show, closeShow }) => {
                 }).then((response) => {
                   console.log(response);
                   if (response.ok) {
-                    queryClient.invalidateQueries("todos");
+                    // queryClient.invalidateQueries("todos");
                     closeShow();
                   }
                 });

@@ -41,8 +41,8 @@ const Column = ({ state, color, data }) => {
             >
               <div className="flex justify-between mb-[8px]">
                 <div className="text-[12px]">
-                  {task.job} |{" "}
-                  <span className="text-[#FE7F26]">{task.status}</span>
+                  {task.speciality} |{" "}
+                  <span className="text-[#FE7F26]">{task.importance}</span>
                 </div>
                 <div>
                   {task?.employes?.length > 0 && (
@@ -56,7 +56,7 @@ const Column = ({ state, color, data }) => {
               <div className="relative">
                 <p className="text-[15px] flex items-center">
                   <span className="absolute w-[10px] h-[10px] bg-[#D9D9D9] rounded-[50%]"></span>
-                  <span className="pl-[20px]">{task.taskInfo}</span>
+                  <span className="pl-[20px]">{task.description}</span>
                 </p>
               </div>
             </li>
@@ -84,8 +84,8 @@ const Column = ({ state, color, data }) => {
               </div>
               <p className="text-[15px] flex items-center">
                 <span className="absolute w-[10px] h-[10px] bg-[#FFBB38] rounded-[50%]"></span>
-                
-                <span className="pl-[20px]">{task.taskInfo}</span>
+
+                <span className="pl-[20px]">{task.description}</span>
               </p>
             </li>
           ))}
@@ -112,7 +112,7 @@ const Column = ({ state, color, data }) => {
               </div>
               <p className="text-[15px] flex items-center">
                 <span className="absolute w-[10px] h-[10px] bg-[#41D4A8] rounded-[50%]"></span>
-                <span className="pl-[20px]">{task.taskInfo}</span>
+                <span className="pl-[20px]">{task.description}</span>
               </p>
             </li>
           ))}
@@ -139,7 +139,7 @@ const Column = ({ state, color, data }) => {
               </div>
               <p className="text-[15px] flex items-center">
                 <span className="absolute w-[10px] h-[10px] bg-[#FC1414] rounded-[50%]"></span>
-                <span className="pl-[20px]">{task.taskInfo}</span>
+                <span className="pl-[20px]">{task.description}</span>
               </p>
             </li>
           ))}

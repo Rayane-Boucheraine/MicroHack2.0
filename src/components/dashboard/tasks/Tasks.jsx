@@ -1,5 +1,7 @@
+"use client";
+import { BACKEND_URL } from "@/data/data";
 import Column from "./Column";
-
+import { useQuery } from "react-query";
 const Tasks = () => {
   const { isLoading, error, data } = useQuery("tasks", async () => {
     const response = await fetch(`${BACKEND_URL}/users/get_all_taches/`);
