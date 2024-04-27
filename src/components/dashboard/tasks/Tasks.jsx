@@ -15,7 +15,7 @@ const Tasks = () => {
   if (isLoading) return <p>Loading data...</p>;
   return (
     <div className="flex gap-4">
-      {["ready", "Ongoing", "Finished", "Problems"].map((state, i) => {
+      {["ready", "en-cours-exucution", "finish", "probleme"].map((state, i) => {
         // filter tasks by state
         let tasks = data?.filter((task) => task.etat === state);
         console.log(tasks);
