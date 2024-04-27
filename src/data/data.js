@@ -12,11 +12,6 @@ export const BACKEND_URL = "http://127.0.0.1:8000";
 
 export const links1 = [
   {
-    icon: dashboard,
-    name: "Dashboard",
-    href: "/dashboard",
-  },
-  {
     icon: tasks,
     name: "Tasks",
     href: "/dashboard/tasks",

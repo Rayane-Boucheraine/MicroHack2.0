@@ -20,7 +20,7 @@ const Column = ({ state, color, data }) => {
         <span className="text-[20px] flex items-center text-[#6B6B6B]">
           {state}{" "}
           <span className="w-[28px] h-[16xpx] text-[15px] rounded-[50%] flex items-center justify-center text-[#E4E4E4] border-[solid] border-[1px] border-[#E4E4E4] ml-[10px]">
-            {data.length}
+            {data?.length}
           </span>{" "}
         </span>
         <span
@@ -30,7 +30,7 @@ const Column = ({ state, color, data }) => {
       </div>
       <ul>
         {state === "Ready" &&
-          data.map((task, index) => (
+          data?.map((task, index) => (
             <li
               key={index}
               className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px]"
@@ -59,7 +59,7 @@ const Column = ({ state, color, data }) => {
           ))}
 
         {state === "Ongoing" &&
-          data.map((task, index) => (
+          data?.map((task, index) => (
             <li
               key={index}
               className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px]"
@@ -86,7 +86,7 @@ const Column = ({ state, color, data }) => {
           ))}
 
         {state === "Finished" &&
-          data.map((task, index) => (
+          data?.map((task, index) => (
             <li
               key={index}
               className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px]"
@@ -113,7 +113,7 @@ const Column = ({ state, color, data }) => {
           ))}
 
         {state === "Problems" &&
-          data.map((task, index) => (
+          data?.map((task, index) => (
             <li
               key={index}
               className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px]"

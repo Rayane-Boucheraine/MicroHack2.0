@@ -1,14 +1,28 @@
 "use client";
-import { workers } from "@/data/data";
+import { BACKEND_URL, workers } from "@/data/data";
 import Image from "next/image";
 import { useState } from "react";
+import { useQuery } from "react-query";
+import { useQueryClient } from "react-query";
 
 const AddTask = ({ show, closeShow }) => {
   const [name, setName] = useState("");
-  const [status, setStatus] = useState("");
-  const [job, setJob] = useState("");
-  const [worker, setWorker] = useState("");
-
+  const [status, setStatus] = useState("Urgent");
+  const [job, setJob] = useState("Plomber");
+  const [workers, setWorkers] = useState("");
+  const queryClient = useQueryClient();
+  const {
+    isLoading,
+    error,
+    data: workersData,
+  } = useQuery("workers", async () => {
+    const response = await fetch(`${BACKEND_URL}/users/get_all_employes/`);
+    if (!response.ok) {
+      throw new Error(`Error fetching workersData: ${response.statusText}`);
+    }
+    return await response.json();
+  });
+  console.log("workersData", workersData);
   return (
     show && (
       <div className="z-100">
@@ -50,9 +64,9 @@ const AddTask = ({ show, closeShow }) => {
                 <option value="Generale">Generale</option>
               </select>
             </div>
-            <label htmlFor="">Choose a worker to solve it</label>
+            {/* <label htmlFor="">Choose a worker to solve it</label>
             <ul className="grid grid-cols-2	gap-[10px]">
-              {workers.map((worker, index) => {
+              {workersData?.employers?.map((worker, index) => {
                 return (
                   <li
                     key={index}
@@ -64,7 +78,7 @@ const AddTask = ({ show, closeShow }) => {
                     />
                     <div className="flex flex-col">
                       <span className=" font-semibold text-[13px]">
-                        {worker.name}
+                        {worker.name} haha
                       </span>
                       <span className="text-[10px] text-[#FE7F26]">
                         {worker.status}
@@ -76,8 +90,33 @@ const AddTask = ({ show, closeShow }) => {
             </ul>
             <button className="rounded-[20px] bg-[#F1F1F1] text-[#6B6B6B] py-[8px] text-[#141414] font-medium text-[14px]">
               Auto choose best fit
-            </button>
-            <button className="rounded-[20px] bg-[#FE7F26] py-[8px] text-[14px]">
+            </button> */}
+            <button
+              className="rounded-[20px] bg-[#FE7F26] py-[8px] text-[14px]"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log(name, status, job);
+
+                fetch(`${BACKEND_URL}/users/chef_add_tache_form/`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    chef_id: 1,
+                    description: name,
+                    importance: status,
+                    speciality: job,
+                  }),
+                }).then((response) => {
+                  console.log(response);
+                  if (response.ok) {
+                    queryClient.invalidateQueries("todos");
+                    closeShow();
+                  }
+                });
+              }}
+            >
               Confirm
             </button>
           </form>
