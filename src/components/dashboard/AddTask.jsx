@@ -6,8 +6,7 @@ import { useQuery } from "react-query";
 import { useQueryClient } from "react-query";
 
 const AddTask = ({ show, closeShow }) => {
-  const token = localStorage.getItem("access");
-  console.log(token);
+  const queryClient = useQueryClient();
   const [name, setName] = useState("");
   const [status, setStatus] = useState("Urgent");
   const [job, setJob] = useState("Plomber");
@@ -17,7 +16,7 @@ const AddTask = ({ show, closeShow }) => {
     isLoading,
     error,
     data: workersData,
-  } = useQuery("workers", async () => {
+  } = useQuery("tasks", async () => {
     const response = await fetch(`${BACKEND_URL}/users/get_all_employes/`);
     if (!response.ok) {
       throw new Error(`Error fetching workersData: ${response.statusText}`);
@@ -112,6 +111,7 @@ const AddTask = ({ show, closeShow }) => {
                   console.log(response);
                   if (response.ok) {
                     // queryClient.invalidateQueries("todos");
+                    queryClient.invalidateQueries(["tasks"]);
                     closeShow();
                   }
                 });

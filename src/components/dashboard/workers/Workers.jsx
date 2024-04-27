@@ -20,7 +20,7 @@ const Workers = () => {
       {error && <p className="text-red-500">Error: {error.message}</p>}
       {data && (
         <ul>
-          {data.employes.map((employ) => (
+          {data?.map((employ) => (
             <li
               key={employ.id}
               className="flex justify-between items-center bg-[#FFFFFF] px-[30px] py-[16px] mb-[10px] rounded-[16px]"
