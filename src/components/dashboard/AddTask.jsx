@@ -1,7 +1,14 @@
+"use client";
 import { workers } from "@/data/data";
 import Image from "next/image";
+import { useState } from "react";
 
 const AddTask = ({ show, closeShow }) => {
+  const [name, setName] = useState("");
+  const [status, setStatus] = useState("");
+  const [job, setJob] = useState("");
+  const [worker, setWorker] = useState("");
+
   return (
     show && (
       <div className="z-100">
@@ -11,16 +18,20 @@ const AddTask = ({ show, closeShow }) => {
           <form className="flex flex-col gap-6">
             <input
               type="text"
-              name="text"
-              id="text"
+              name="name"
+              id="name"
               className="bg-[#D9D9D9] rounded-[10px] py-[10px] px-[16px] placeholder:text-[#6B6B6B] outline-none"
               placeholder="Write the task..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <div className="flex justify-between">
               <select
                 name="status"
                 id="status"
                 className="bg-[#D9D9D9] w-[46%] px-[16px] py-[6px] rounded-[10px]"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="Urgent">Urgent</option>
                 <option value="Moderete">Moderete</option>
@@ -30,6 +41,8 @@ const AddTask = ({ show, closeShow }) => {
                 name="job"
                 id="job"
                 className="bg-[#D9D9D9] w-[46%] px-[16px] py-[6px] rounded-[10px]"
+                value={job}
+                onChange={(e) => setJob(e.target.value)}
               >
                 <option value="Plomber">Plomber</option>
                 <option value="Mason">Mason</option>
@@ -41,7 +54,10 @@ const AddTask = ({ show, closeShow }) => {
             <ul className="grid grid-cols-2	gap-[10px]">
               {workers.map((worker, index) => {
                 return (
-                  <li key={index} className="cursor-pointer rounded-[16px] flex items-center gap-2 bg-[#F1F1F1] py-[6px] w-[200px] px-[10px]">
+                  <li
+                    key={index}
+                    className="cursor-pointer rounded-[16px] flex items-center gap-2 bg-[#F1F1F1] py-[6px] w-[200px] px-[10px]"
+                  >
                     <Image
                       src={worker.img}
                       className=" rounded-[50%] w-[36px] h-[36px]"

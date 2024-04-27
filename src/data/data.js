@@ -3,10 +3,12 @@ import tasks from "../../public/Aside/tasks.svg";
 import employers from "../../public/Aside/employers.svg";
 import problems from "../../public/Aside/problems.svg";
 import help from "../../public/Aside/help.svg";
-import Samy from "../../public/Header/human.svg"
-import Samy1 from "../../public/Header/human1.svg"
-import Samy2 from "../../public/Header/human2.svg"
-import {FaStar} from 'react-icons/fa'
+import Samy from "../../public/Header/human.svg";
+import Samy1 from "../../public/Header/human1.svg";
+import Samy2 from "../../public/Header/human2.svg";
+import { FaStar } from "react-icons/fa";
+
+export const BACKEND_URL = "http://127.0.0.1:8000";
 
 export const links1 = [
   {
@@ -76,8 +78,6 @@ export const workers = [
     status: "Free",
   },
 ];
-
-
 
 export const Employers = [
   {
@@ -189,5 +189,89 @@ export const Employers = [
         <FaStar /> <FaStar /> <FaStar />
       </>
     ),
+  },
+];
+
+export const tasksReady = [
+  {
+    img: Samy,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Install drywall panels in rooms on level 3",
+  },
+  {
+    img: Samy1,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Analyzing project requirements and creating a budget.",
+  },
+  {
+    img: Samy2,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Place carpets on living rooms",
+  },
+  {
+    img: Samy1,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Analyzing project requirements and creating a budget.",
+  },
+];
+
+export const tasksOngoing = [
+  {
+    img: Samy2,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Paint the walls on C2",
+  },
+  {
+    img: Samy1,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Analyzing project requirements and creating a budget.",
+  },
+];
+
+export const tasksFinished = [
+  {
+    img: Samy2,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Install drywall panels in rooms on level 3",
+  },
+  {
+    img: Samy,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Analyzing project.",
+  },
+  {
+    img: Samy1,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Place carpets on living rooms",
+  },
+];
+
+export const problemss = [
+  {
+    img: Samy,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Analyzing project requirements and creating a budget.",
+  },
+  {
+    img: Samy,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Analyzing project requirements and creating a budget.",
+  },
+  {
+    img: Samy,
+    job: "Plomber",
+    status: "Urgent",
+    taskInfo: "Analyzing project requirements and creating a budget.",
   },
 ];
