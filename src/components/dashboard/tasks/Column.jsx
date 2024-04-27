@@ -3,8 +3,21 @@ import { tasksOngoing } from "@/data/data";
 import { tasksFinished } from "@/data/data";
 import { problemss } from "@/data/data";
 import Image from "next/image";
+import add from "../../../../public/Header/human.svg";
 
-const Column = ({ state, color }) => {
+const Column = ({ state, color, data }) => {
+  if (state === "en-cours-exucution") {
+    state = "Ongoing";
+  }
+  if (state === "finish") {
+    state = "Finished";
+  }
+  if (state === "probleme") {
+    state = "Problems";
+  }
+  if (state === "ready") {
+    state = "Ready";
+  }
   return (
     <div className="w-[25%] max-md:w-[100%]">
       <div className="relative flex items-center bg-[#FFFFFF] py-[12px] px-[20px] rounded-[10px] mb-[12px]">
@@ -21,7 +34,7 @@ const Column = ({ state, color }) => {
       </div>
       <ul>
         {state === "Ready" &&
-          tasksReady.map((task, index) => (
+          data.map((task, index) => (
             <li
               key={index}
               className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
@@ -32,10 +45,12 @@ const Column = ({ state, color }) => {
                   <span className="text-[#FE7F26]">{task.status}</span>
                 </div>
                 <div>
-                  <Image
-                    src={task.img}
-                    className="w-[26px] h-[26px] rounded-[50%]"
-                  />
+                  {task?.employes?.length > 0 && (
+                    <Image
+                      src={add}
+                      className="w-[26px] h-[26px] rounded-[50%]"
+                    />
+                  )}
                 </div>
               </div>
               <div className="relative">
@@ -55,14 +70,16 @@ const Column = ({ state, color }) => {
             >
               <div className="flex justify-between mb-[8px]">
                 <div className="text-[12px]">
-                  {task.job} |{" "}
-                  <span className="text-[#FE7F26]">{task.status}</span>
+                  {task.speciality} |{" "}
+                  <span className="text-[#FE7F26]">{task.importance}</span>
                 </div>
                 <div>
-                  <Image
-                    src={task.img}
-                    className="w-[26px] h-[26px] rounded-[50%]"
-                  />
+                  {task?.employes?.length > 0 && (
+                    <Image
+                      src={add}
+                      className="w-[26px] h-[26px] rounded-[50%]"
+                    />
+                  )}
                 </div>
               </div>
               <p className="text-[15px] flex items-center">
@@ -80,14 +97,16 @@ const Column = ({ state, color }) => {
             >
               <div className="flex justify-between mb-[8px]">
                 <div className="text-[12px]">
-                  {task.job} |{" "}
-                  <span className="text-[#FE7F26]">{task.status}</span>
+                  {task.speciality} |{" "}
+                  <span className="text-[#FE7F26]">{task.importance}</span>
                 </div>
                 <div>
-                  <Image
-                    src={task.img}
-                    className="w-[26px] h-[26px] rounded-[50%]"
-                  />
+                  {task?.employes?.length > 0 && (
+                    <Image
+                      src={add}
+                      className="w-[26px] h-[26px] rounded-[50%]"
+                    />
+                  )}
                 </div>
               </div>
               <p className="text-[15px] flex items-center">
@@ -105,14 +124,16 @@ const Column = ({ state, color }) => {
             >
               <div className="flex justify-between mb-[8px]">
                 <div className="text-[12px]">
-                  {task.job} |{" "}
-                  <span className="text-[#FE7F26]">{task.status}</span>
+                  {task.speciality} |{" "}
+                  <span className="text-[#FE7F26]">{task.importance}</span>
                 </div>
                 <div>
-                  <Image
-                    src={task.img}
-                    className="w-[26px] h-[26px] rounded-[50%]"
-                  />
+                  {task?.employes?.length > 0 && (
+                    <Image
+                      src={add}
+                      className="w-[26px] h-[26px] rounded-[50%]"
+                    />
+                  )}
                 </div>
               </div>
               <p className="text-[15px] flex items-center">
