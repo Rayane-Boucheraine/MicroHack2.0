@@ -18,7 +18,7 @@ const Tasks = () => {
         {["ready", "en-cours-exucution", "finish", "probleme"].map(
           (state, i) => {
             // filter tasks by state
-            let tasks = data.filter((task) => task.etat === state);
+            let tasks = data?.filter((task) => task.etat === state);
             return <Column state={state} data={tasks} key={i} />;
           }
         )}
