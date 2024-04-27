@@ -20,7 +20,7 @@ const Workers = () => {
       {error && <p className="text-red-500">Error: {error.message}</p>}
       {data && (
         <ul>
-          {data?.map((employ) => (
+          {data.employes.map((employ) => (
             <li
               key={employ.id}
               className="flex justify-between items-center bg-[#FFFFFF] px-[30px] py-[16px] mb-[10px] rounded-[16px]"
@@ -28,7 +28,7 @@ const Workers = () => {
               <span className="flex items-center w-[200px] text-center">
                 <Image src={employ.img} className="rounded-[50%] w-[40px]" />
                 <span className="font-semibold pl-[40px]">
-                  {employ.username}
+                  {employ.first_name} {employ.last_name}
                 </span>
               </span>
               <span className="font-semibold w-[200px] text-center">

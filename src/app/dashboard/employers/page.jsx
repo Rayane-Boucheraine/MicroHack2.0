@@ -3,6 +3,7 @@ import Image from "next/image";
 import ty_pe from "../../../../public/tasks/type.svg";
 import Workers from "@/components/dashboard/workers/Workers";
 import { useState } from "react";
+import AddWorker from "@/components/dashboard/workers/AddWorker";
 
 const Employers = () => {
   const [show, setShow] = useState(false);
@@ -19,8 +20,13 @@ const Employers = () => {
           className="flex items-center gap-2 bg-[#FE7F26] px-[10px] py-[6px] rounded-[12px] w-[160px] max-md:w-[140px]"
           onClick={handlleShow}
         >
-          Add Task
+          Add workers
         </button>
+        <AddWorker
+          show={show}
+          handlleShow={handlleShow}
+          closeShow={closeShow}
+        />
       </div>
       <ul className="flex flex-col w-[96%] max-md:w-[100%]">
         <li className="flex mb-[10px]">

@@ -11,7 +11,6 @@ const AddTask = ({ show, closeShow }) => {
   const [status, setStatus] = useState("Urgent");
   const [job, setJob] = useState("Plomber");
   const [workers, setWorkers] = useState("");
-  // const queryClient = useQueryClient();
   const {
     isLoading,
     error,
