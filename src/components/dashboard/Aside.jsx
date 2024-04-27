@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 const Aside = () => {
   const pathName = usePathname()
   return (
-    <aside className="fixed bottom-0 left-0 bg-[#FFFFFF] ml-[1%] w-[16%] h-[95vh] p-[40px_0] rounded-[26px] top-[50%] translate-y-[-50%]">
+    <aside className="fixed bottom-0 left-0 bg-[#FFFFFF] ml-[1%] w-[16%] h-[95vh] p-[40px_0] rounded-[26px] top-[50%] translate-y-[-50%] max-md:hidden max-md:w-0">
       <Image
         src={Logo}
         className="relative left-[50%] translate-x-[-50%] mb-[80px] w-[160px]"

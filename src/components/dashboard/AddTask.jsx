@@ -27,25 +27,21 @@ const AddTask = ({ show, closeShow }) => {
     show && (
       <div className="z-100">
         <div className="fixed left-0 top-0  opacity-60 bg-[#3F3E3E] min-h-[100vh] w-[100%] z-20"></div>
-        <div className="fixed z-50 flex gap-4 rounded-[10px] flex-col top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-[#FFF] p-[20px]">
+        <div className="fixed z-50 flex gap-4 rounded-[10px] flex-col top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-[#FFF] py-[20px] px-[20px] max-md:w-[86%]">
           <h1 className="font-semibold">Task Information</h1>
           <form className="flex flex-col gap-6">
             <input
               type="text"
-              name="name"
-              id="name"
+              name="text"
+              id="text"
               className="bg-[#D9D9D9] rounded-[10px] py-[10px] px-[16px] placeholder:text-[#6B6B6B] outline-none"
               placeholder="Write the task..."
-              value={name}
-              onChange={(e) => setName(e.target.value)}
             />
             <div className="flex justify-between">
               <select
                 name="status"
                 id="status"
                 className="bg-[#D9D9D9] w-[46%] px-[16px] py-[6px] rounded-[10px]"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="Urgent">Urgent</option>
                 <option value="Moderete">Moderete</option>
@@ -55,8 +51,6 @@ const AddTask = ({ show, closeShow }) => {
                 name="job"
                 id="job"
                 className="bg-[#D9D9D9] w-[46%] px-[16px] py-[6px] rounded-[10px]"
-                value={job}
-                onChange={(e) => setJob(e.target.value)}
               >
                 <option value="Plomber">Plomber</option>
                 <option value="Mason">Mason</option>
@@ -65,12 +59,13 @@ const AddTask = ({ show, closeShow }) => {
               </select>
             </div>
             {/* <label htmlFor="">Choose a worker to solve it</label>
+            <label htmlFor="">Choose a worker to solve it: </label>
             <ul className="grid grid-cols-2	gap-[10px]">
               {workersData?.employers?.map((worker, index) => {
                 return (
                   <li
                     key={index}
-                    className="cursor-pointer rounded-[16px] flex items-center gap-2 bg-[#F1F1F1] py-[6px] w-[200px] px-[10px]"
+                    className="cursor-pointer rounded-[16px] flex items-center gap-2 bg-[#F1F1F1] py-[6px] w-[200px] px-[10px] max-md:w-[150px] hover:border-[1px] hover:border-[#FE7F26]"
                   >
                     <Image
                       src={worker.img}

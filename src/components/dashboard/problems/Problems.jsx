@@ -5,7 +5,7 @@ import { workers } from "@/data/data";
 
 const Problems = () => {
   return (
-    <div className="flex gap-[60px] items-center bg-[#FFFFFF] w-fit p-[30px_60px] rounded-[8px] mb-[40px]">
+    <div className="flex gap-[60px] items-center bg-[#FFFFFF] w-fit p-[30px_60px] rounded-[8px] mb-[40px] max-md:flex-col max-md:px-[20px]">
       <div className="flex flex-col gap-4">
         <Image src={prob} className="" />
         <div>
@@ -26,7 +26,10 @@ const Problems = () => {
         <ul className="grid grid-cols-2	gap-[10px]">
           {workers.map((worker, index) => {
             return (
-              <li key={index} className="cursor-pointer rounded-[16px] flex items-center gap-2 bg-[#F1F1F1] py-[6px] w-[200px] px-[10px]">
+              <li
+                key={index}
+                className="cursor-pointer rounded-[16px] flex items-center gap-2 bg-[#F1F1F1] py-[6px] w-[200px] px-[10px] max-md:w-[160px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
+              >
                 <Image
                   src={worker.img}
                   className=" rounded-[50%] w-[36px] h-[36px]"

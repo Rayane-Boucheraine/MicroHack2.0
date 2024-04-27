@@ -1,23 +1,14 @@
-"use client";
-
 import Image from "next/image";
-import logo from "../../public/logo.svg";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "react-query";
+import logo from '../../public/logo.svg'
+
+
 
 export default function Home() {
   return (
     <div className="flex flex-col justify-center items-center bg-[#EEEEEE] h-screen w-screen">
       <Image src={logo} className="mb-[40px]" />
       <form className="bg-[#FFFFFF] flex flex-col gap-8 p-[20px] rounded-[10px]">
-        <label className=" font-semibold text-[18px]">
-          Login to your account:
-        </label>
+        <label className=" font-semibold text-[18px]">Login to your account:</label>
         <input
           type="email"
           name="email"
