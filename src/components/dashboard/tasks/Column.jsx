@@ -84,6 +84,7 @@ const Column = ({ state, color, data }) => {
               </div>
               <p className="text-[15px] flex items-center">
                 <span className="absolute w-[10px] h-[10px] bg-[#FFBB38] rounded-[50%]"></span>
+                
                 <span className="pl-[20px]">{task.taskInfo}</span>
               </p>
             </li>
