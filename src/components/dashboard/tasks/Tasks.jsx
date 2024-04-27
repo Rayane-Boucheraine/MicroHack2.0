@@ -1,18 +1,6 @@
-"use client";
-import { BACKEND_URL } from "@/data/data";
-import Column from "./Column";
-import { useQuery } from "react-query";
+import Column from "./Column"
 
 const Tasks = () => {
-  const { isLoading, error, data } = useQuery("employers", async () => {
-    const response = await fetch(`${BACKEND_URL}/users/get_all_taches/`);
-    if (!response.ok) {
-      throw new Error(`Error fetching data: ${response.statusText}`);
-    }
-    return await response.json();
-  });
-  console.log(data);
-  if (isLoading) return <p>Loading data...</p>;
   return (
     <div className="flex gap-4">
       {["ready", "en-cours-exucution", "finish", "probleme"].map((state, i) => {
@@ -23,6 +11,6 @@ const Tasks = () => {
       })}
     </div>
   );
-};
+}
 
-export default Tasks;
+export default Tasks

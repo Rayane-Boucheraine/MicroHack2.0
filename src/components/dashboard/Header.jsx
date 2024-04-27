@@ -18,18 +18,18 @@ const Header = () => {
 
   return (
     <header className="flex justify-between items-center w-[99%] mb-[80px]">
-      <div className="flex items-center gap-6 w-[80%]">
+      <div className="flex items-center gap-6 w-[80%] max-md:block">
         <form className="w-[100%]">
           <input
             type="text"
             name="search"
             id="search"
             placeholder="Search For Workers"
-            className="bg-[#FFF] w-[100%] rounded-[12px] py-[10px] px-[20px] outline-none"
+            className="bg-[#FFF] w-[100%] rounded-[12px] py-[10px] px-[20px] outline-none max-md:hidden"
           />
         </form>
         <button
-          className="flex items-center gap-2 bg-[#FE7F26] px-[10px] py-[6px] rounded-[12px] w-[160px]"
+          className="flex items-center gap-2 bg-[#FE7F26] px-[10px] py-[6px] rounded-[12px] w-[160px] max-md:w-[140px]"
           onClick={handlleShow}
         >
           <Image src={add} />
@@ -41,7 +41,7 @@ const Header = () => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="cursor-pointer text-[#FE7F26] w-8 h-8"
+          class="cursor-pointer text-[#FE7F26] w-8 h-8 max-md:hidden"
         >
           <path
             stroke-linecap="round"

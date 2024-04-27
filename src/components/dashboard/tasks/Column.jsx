@@ -1,3 +1,7 @@
+import { tasksReady } from "@/data/data";
+import { tasksOngoing } from "@/data/data";
+import { tasksFinished } from "@/data/data";
+import { problemss } from "@/data/data";
 import Image from "next/image";
 import add from "../../../../public/Header/human.svg";
 
@@ -15,12 +19,12 @@ const Column = ({ state, color, data }) => {
     state = "Ready";
   }
   return (
-    <div className="w-[25%]">
+    <div className="w-[25%] max-md:w-[100%]">
       <div className="relative flex items-center bg-[#FFFFFF] py-[12px] px-[20px] rounded-[10px] mb-[12px]">
         <span className="text-[20px] flex items-center text-[#6B6B6B]">
           {state}{" "}
           <span className="w-[28px] h-[16xpx] text-[15px] rounded-[50%] flex items-center justify-center text-[#E4E4E4] border-[solid] border-[1px] border-[#E4E4E4] ml-[10px]">
-            {data.length}
+            2
           </span>{" "}
         </span>
         <span
@@ -33,12 +37,12 @@ const Column = ({ state, color, data }) => {
           data.map((task, index) => (
             <li
               key={index}
-              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px]"
+              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
             >
               <div className="flex justify-between mb-[8px]">
                 <div className="text-[12px]">
-                  {task.speciality} |{" "}
-                  <span className="text-[#FE7F26]">{task.importance}</span>
+                  {task.job} |{" "}
+                  <span className="text-[#FE7F26]">{task.status}</span>
                 </div>
                 <div>
                   {task?.employes?.length > 0 && (
@@ -52,17 +56,17 @@ const Column = ({ state, color, data }) => {
               <div className="relative">
                 <p className="text-[15px] flex items-center">
                   <span className="absolute w-[10px] h-[10px] bg-[#D9D9D9] rounded-[50%]"></span>
-                  <span className="pl-[20px]">{task.description}</span>
+                  <span className="pl-[20px]">{task.taskInfo}</span>
                 </p>
               </div>
             </li>
           ))}
 
         {state === "Ongoing" &&
-          data.map((task, index) => (
+          tasksOngoing.map((task, index) => (
             <li
               key={index}
-              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px]"
+              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
             >
               <div className="flex justify-between mb-[8px]">
                 <div className="text-[12px]">
@@ -80,16 +84,17 @@ const Column = ({ state, color, data }) => {
               </div>
               <p className="text-[15px] flex items-center">
                 <span className="absolute w-[10px] h-[10px] bg-[#FFBB38] rounded-[50%]"></span>
-                <span className="pl-[20px]">{task.description}</span>
+                
+                <span className="pl-[20px]">{task.taskInfo}</span>
               </p>
             </li>
           ))}
 
         {state === "Finished" &&
-          data.map((task, index) => (
+          tasksFinished.map((task, index) => (
             <li
               key={index}
-              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px]"
+              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
             >
               <div className="flex justify-between mb-[8px]">
                 <div className="text-[12px]">
@@ -107,16 +112,16 @@ const Column = ({ state, color, data }) => {
               </div>
               <p className="text-[15px] flex items-center">
                 <span className="absolute w-[10px] h-[10px] bg-[#41D4A8] rounded-[50%]"></span>
-                <span className="pl-[20px]">{task.description}</span>
+                <span className="pl-[20px]">{task.taskInfo}</span>
               </p>
             </li>
           ))}
 
         {state === "Problems" &&
-          data.map((task, index) => (
+          problemss.map((task, index) => (
             <li
               key={index}
-              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px]"
+              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
             >
               <div className="flex justify-between mb-[8px]">
                 <div className="text-[12px]">
@@ -134,7 +139,7 @@ const Column = ({ state, color, data }) => {
               </div>
               <p className="text-[15px] flex items-center">
                 <span className="absolute w-[10px] h-[10px] bg-[#FC1414] rounded-[50%]"></span>
-                <span className="pl-[20px]">{task.description}</span>
+                <span className="pl-[20px]">{task.taskInfo}</span>
               </p>
             </li>
           ))}
