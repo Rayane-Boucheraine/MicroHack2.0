@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import ty_pe from "../../../../public/tasks/type.svg";
 import Workers from "@/components/dashboard/workers/Workers";
 import { useState } from "react";
 import AddWorker from "@/components/dashboard/workers/AddWorker";
