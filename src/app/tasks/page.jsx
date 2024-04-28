@@ -1,4 +1,4 @@
-import ty_pe from "../../../../public/tasks/type.svg";
+import ty_pe from "../../../public/tasks/type.svg";
 import Tasks from "../../components/dashboard/tasks/Tasks.jsx";
 import Image from "next/image";
 
