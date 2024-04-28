@@ -2,7 +2,7 @@
 import { links1, links2 } from '@/data/data';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from "../../../public/logo.svg"
+import Logo from "../../../public/Logo.svg"
 import logout from "../../../public/Aside/Logout.svg";
 import { usePathname } from 'next/navigation';
 
