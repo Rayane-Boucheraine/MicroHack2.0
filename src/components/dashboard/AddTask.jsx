@@ -1,28 +1,20 @@
 "use client";
-import { BACKEND_URL, workers } from "@/data/data";
 import Image from "next/image";
 import { useState } from "react";
-import { useQuery } from "react-query";
-import { useQueryClient } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
+import { getEmployers, addTask } from "@/lib/mockApi";
 
 const AddTask = ({ show, closeShow }) => {
   const queryClient = useQueryClient();
   const [name, setName] = useState("");
   const [status, setStatus] = useState("Urgent");
-  const [job, setJob] = useState("Plomber");
-  const [workers, setWorkers] = useState("");
+  const [job, setJob] = useState("Plumber");
+  const [selectedWorker, setSelectedWorker] = useState(null);
   const {
     isLoading,
     error,
     data: workersData,
-  } = useQuery("tasks", async () => {
-    const response = await fetch(`${BACKEND_URL}/users/get_all_employes/`);
-    if (!response.ok) {
-      throw new Error(`Error fetching workersData: ${response.statusText}`);
-    }
-    return await response.json();
-  });
-  console.log("workersData", workersData);
+  } = useQuery("employers", getEmployers);
   return (
     show && (
       <div className="z-100">
@@ -55,32 +47,30 @@ const AddTask = ({ show, closeShow }) => {
                 name="job"
                 id="job"
                 className="bg-[#D9D9D9] w-[46%] px-[16px] py-[6px] rounded-[10px]"
+                value={job}
+                onChange={(e) => setJob(e.target.value)}
               >
-                <option value="Plomber">Plomber</option>
+                <option value="Plumber">Plumber</option>
                 <option value="Mason">Mason</option>
-                <option value="Carpunter">Carpunter</option>
-                <option value="Generale">Generale</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="General">General</option>
               </select>
             </div>
             <label htmlFor="">Choose a worker to solve it</label>
             <ul className="grid grid-cols-2	gap-[10px]">
-              {[].map((worker, index) => {
+              {workersData?.employes?.map((worker, index) => {
                 return (
                   <li
                     key={index}
-                    className="cursor-pointer rounded-[16px] flex items-center gap-2 bg-[#F1F1F1] py-[6px] w-[200px] px-[10px] max-md:w-[150px] hover:border-[1px] hover:border-[#FE7F26]"
+                    onClick={() => setSelectedWorker(worker.id)}
+                    className={`cursor-pointer rounded-[16px] flex items-center gap-2 bg-[#F1F1F1] py-[6px] w-[200px] px-[10px] max-md:w-[150px] hover:border-[1px] hover:border-[#FE7F26] ${selectedWorker === worker.id ? "border-[#FE7F26] border" : ""}`}
                   >
-                    <Image
-                      src={worker.img}
-                      className=" rounded-[50%] w-[36px] h-[36px]"
-                    />
+                    <img src={worker.img || "/Header/human.svg"} alt={`${worker.first_name} ${worker.last_name}`} className=" rounded-[50%] w-[36px] h-[36px] object-cover" />
                     <div className="flex flex-col">
                       <span className=" font-semibold text-[13px]">
-                        {worker.name}
+                        {worker.first_name} {worker.last_name}
                       </span>
-                      <span className="text-[10px] text-[#FE7F26]">
-                        {worker.status}
-                      </span>
+                      <span className="text-[10px] text-[#FE7F26]">{worker.status}</span>
                     </div>
                   </li>
                 );
@@ -93,26 +83,14 @@ const AddTask = ({ show, closeShow }) => {
               className="rounded-[20px] bg-[#FE7F26] py-[8px] text-[14px]"
               onClick={(e) => {
                 e.preventDefault();
-                console.log(name, status, job);
-
-                fetch(`${BACKEND_URL}/users/chef_add_tache_form/`, {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    chef_id: 1,
-                    description: name,
-                    importance: status,
-                    speciality: job,
-                  }),
-                }).then((response) => {
-                  console.log(response);
-                  if (response.ok) {
-                    // queryClient.invalidateQueries("todos");
-                    queryClient.invalidateQueries(["tasks"]);
-                    closeShow();
-                  }
+                addTask({
+                  description: name,
+                  importance: status,
+                  speciality: job,
+                  employe_id: selectedWorker,
+                }).then(() => {
+                  queryClient.invalidateQueries(["tasks"]);
+                  closeShow();
                 });
               }}
             >
@@ -124,14 +102,14 @@ const AddTask = ({ show, closeShow }) => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              class="w-6 h-6"
+              className="w-6 h-6"
               onClick={closeShow}
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M6 18 18 6M6 6l12 12"
               />
             </svg>

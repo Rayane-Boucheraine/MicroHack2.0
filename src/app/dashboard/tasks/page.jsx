@@ -1,22 +1,19 @@
-import ty_pe from '../../../../public/tasks/type.svg'
-import Tasks from '../../../components/dashboard/tasks/Tasks.jsx'
-import Image from 'next/image';
+import ty_pe from "../../../../public/tasks/type.svg";
+import Tasks from "../../../components/dashboard/tasks/Tasks.jsx";
+import Image from "next/image";
 
 const Task = () => {
   return (
     <div className="relative">
-      <div className="flex justify-end items-center w-[90%] max-md:w-[98%] mb-[16px]">
-        <span className="absolute w-[82%] max-md:w-[74%] h-[3px] bg-[#D9D9D9] left-0"></span>
-        <div className="flex items-center">
-          <Image src={ty_pe} className='relative right-0'/>
-          All Tasks
+      <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center gap-2 text-white/80">
+          <Image src={ty_pe} alt="Tasks" className="h-6 w-6" />
+          <h2 className="text-xl font-semibold">All Tasks</h2>
         </div>
       </div>
-      <div>
-        <Tasks />
-      </div>
+      <Tasks />
     </div>
   );
-}
+};
 
-export default Task
+export default Task;

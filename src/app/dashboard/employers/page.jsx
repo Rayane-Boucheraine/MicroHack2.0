@@ -15,34 +15,32 @@ const Employers = () => {
   };
   return (
     <div className="relative">
-      <div className="flex justify-end items-center w-[90%] max-md:w-[98%] mb-[16px]">
+      <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center gap-2 text-white/80">
+          <Image src={ty_pe} alt="Workers" className="h-6 w-6" />
+          <h2 className="text-xl font-semibold">Workers</h2>
+        </div>
         <button
-          className="flex items-center gap-2 bg-[#FE7F26] px-[10px] py-[6px] rounded-[12px] w-[160px] max-md:w-[140px]"
+          className="rounded-xl bg-gradient-to-r from-[#FE7F26] to-[#ff974d] px-4 py-2 font-medium text-[#141414] shadow-sm hover:opacity-95"
           onClick={handlleShow}
         >
           Add workers
         </button>
-        <AddWorker
-          show={show}
-          handlleShow={handlleShow}
-          closeShow={closeShow}
-        />
+        <AddWorker show={show} closeShow={closeShow} />
       </div>
-      <ul className="flex flex-col w-[96%] max-md:w-[100%]">
-        <li className="flex mb-[10px]">
-          <span className="w-[114px]"></span>
-          <span className="text-[#6B6B6B] w-[210px] max-md:w-[160px] font-medium max-md:text-[14px]">
+      <ul className="flex flex-col">
+        <li className="mb-[10px] flex text-white/60">
+          <span className="w-[114px]" />
+          <span className="w-[210px] max-md:w-[160px] font-medium max-md:text-[14px]">
             Full Name
           </span>
-          <span className="text-[#6B6B6B] md:w-[246px] max-md:w-[170px] font-medium max-md:text-[14px]">
+          <span className="md:w-[246px] max-md:w-[170px] font-medium max-md:text-[14px]">
             Speciality
           </span>
-          <span className="text-[#6B6B6B] w-[234px] max-md:w-[120px] font-medium max-md:text-[14px]">
+          <span className="w-[234px] max-md:w-[120px] font-medium max-md:text-[14px]">
             Status
           </span>
-          <span className="text-[#6B6B6B] font-medium max-md:pr-[10px]">
-            Rating
-          </span>
+          <span className="font-medium max-md:pr-[10px]">Rating</span>
         </li>
         <Workers />
       </ul>

@@ -1,29 +1,33 @@
 "use client";
-import { BACKEND_URL } from "@/data/data";
 import Column from "./Column";
 import { useQuery } from "react-query";
+import { getTasks } from "@/lib/mockApi";
 const Tasks = () => {
-  const { isLoading, error, data } = useQuery("tasks", async () => {
-    const response = await fetch(`${BACKEND_URL}/users/get_all_taches/`);
-    if (!response.ok) {
-      throw new Error(`Error fetching data: ${response.statusText}`);
-    }
-    return await response.json();
-  });
+  const { isLoading, error, data } = useQuery("tasks", getTasks);
 
-  if (isLoading) return <p>Loading data...</p>;
-  if (data)
+  if (isLoading) return <p className="text-white/70">Loading tasks…</p>;
+  if (error)
     return (
-      <div className="flex gap-4">
-        {["ready", "en-cours-exucution", "finish", "probleme"].map(
-          (state, i) => {
-            // filter tasks by state
-            let tasks = data?.filter((task) => task.etat === state);
-            return <Column state={state} data={tasks} key={i} />;
-          }
-        )}
-      </div>
+      <p className="text-red-400">Failed to load tasks: {`${error}`}</p>
     );
+
+  const states = [
+    { key: "ready", color: "#D9D9D9" },
+    { key: "en-cours-exucution", color: "#FFBB38" },
+    { key: "finish", color: "#41D4A8" },
+    { key: "probleme", color: "#FC1414" },
+  ];
+
+  const list = Array.isArray(data) ? data : [];
+
+  return (
+    <div className="flex flex-col gap-4 md:flex-row">
+      {states.map(({ key, color }, i) => {
+        const colTasks = list.filter((task) => task.etat === key);
+        return <Column state={key} color={color} data={colTasks} key={i} />;
+      })}
+    </div>
+  );
 };
 
 export default Tasks;

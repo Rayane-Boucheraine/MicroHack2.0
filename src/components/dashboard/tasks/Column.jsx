@@ -1,7 +1,3 @@
-import { tasksReady } from "@/data/data";
-import { tasksOngoing } from "@/data/data";
-import { tasksFinished } from "@/data/data";
-import { problemss } from "@/data/data";
 import Image from "next/image";
 import add from "../../../../public/Header/human.svg";
 
@@ -20,27 +16,27 @@ const Column = ({ state, color, data }) => {
   }
   return (
     <div className="w-[25%] max-md:w-[100%]">
-      <div className="relative flex items-center bg-[#FFFFFF] py-[12px] px-[20px] rounded-[10px] mb-[12px]">
-        <span className="text-[20px] flex items-center text-[#6B6B6B]">
+      <div className="relative mb-3 flex items-center rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+        <span className="flex items-center text-[18px] text-white">
           {state}{" "}
-          <span className="w-[28px] h-[16xpx] text-[15px] rounded-[50%] flex items-center justify-center text-[#E4E4E4] border-[solid] border-[1px] border-[#E4E4E4] ml-[10px]">
+          <span className="ml-2 flex h-[20px] w-[28px] items-center justify-center rounded-full border border-white/20 text-[12px] text-white/70">
             {data?.length}
           </span>{" "}
         </span>
         <span
-          className="absolute w-[14px] h-[14px] rounded-[50%] right-4"
+          className="absolute right-4 h-[12px] w-[12px] rounded-full"
           style={{ backgroundColor: color }}
-        ></span>
+        />
       </div>
       <ul>
         {state === "Ready" &&
           data?.map((task, index) => (
             <li
               key={index}
-              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
+              className="mb-[12px] rounded-[12px] border border-white/10 bg-white/5 p-[16px] duration-300 hover:border-[#FE7F26]"
             >
               <div className="flex justify-between mb-[8px]">
-                <div className="text-[12px]">
+                <div className="text-[12px] text-white/80">
                   {task.speciality} |{" "}
                   <span className="text-[#FE7F26]">{task.importance}</span>
                 </div>
@@ -48,14 +44,15 @@ const Column = ({ state, color, data }) => {
                   {task?.employes?.length > 0 && (
                     <Image
                       src={add}
+                      alt="Assigned"
                       className="w-[26px] h-[26px] rounded-[50%]"
                     />
                   )}
                 </div>
               </div>
               <div className="relative">
-                <p className="text-[15px] flex items-center">
-                  <span className="absolute w-[10px] h-[10px] bg-[#D9D9D9] rounded-[50%]"></span>
+                <p className="flex items-center text-[15px] text-white">
+                  <span className="absolute h-[10px] w-[10px] rounded-full bg-[#D9D9D9]"></span>
                   <span className="pl-[20px]">{task.description}</span>
                 </p>
               </div>
@@ -66,10 +63,10 @@ const Column = ({ state, color, data }) => {
           data?.map((task, index) => (
             <li
               key={index}
-              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
+              className="mb-[12px] rounded-[12px] border border-white/10 bg-white/5 p-[16px] duration-300 hover:border-[#FE7F26]"
             >
               <div className="flex justify-between mb-[8px]">
-                <div className="text-[12px]">
+                <div className="text-[12px] text-white/80">
                   {task.speciality} |{" "}
                   <span className="text-[#FE7F26]">{task.importance}</span>
                 </div>
@@ -77,14 +74,14 @@ const Column = ({ state, color, data }) => {
                   {task?.employes?.length > 0 && (
                     <Image
                       src={add}
+                      alt="Assigned"
                       className="w-[26px] h-[26px] rounded-[50%]"
                     />
                   )}
                 </div>
               </div>
-              <p className="text-[15px] flex items-center">
-                <span className="absolute w-[10px] h-[10px] bg-[#FFBB38] rounded-[50%]"></span>
-
+              <p className="flex items-center text-[15px] text-white">
+                <span className="absolute h-[10px] w-[10px] rounded-full bg-[#FFBB38]"></span>
                 <span className="pl-[20px]">{task.description}</span>
               </p>
             </li>
@@ -94,10 +91,10 @@ const Column = ({ state, color, data }) => {
           data?.map((task, index) => (
             <li
               key={index}
-              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
+              className="mb-[12px] rounded-[12px] border border-white/10 bg-white/5 p-[16px] duration-300 hover:border-[#FE7F26]"
             >
               <div className="flex justify-between mb-[8px]">
-                <div className="text-[12px]">
+                <div className="text-[12px] text-white/80">
                   {task.speciality} |{" "}
                   <span className="text-[#FE7F26]">{task.importance}</span>
                 </div>
@@ -105,13 +102,14 @@ const Column = ({ state, color, data }) => {
                   {task?.employes?.length > 0 && (
                     <Image
                       src={add}
+                      alt="Assigned"
                       className="w-[26px] h-[26px] rounded-[50%]"
                     />
                   )}
                 </div>
               </div>
-              <p className="text-[15px] flex items-center">
-                <span className="absolute w-[10px] h-[10px] bg-[#41D4A8] rounded-[50%]"></span>
+              <p className="flex items-center text-[15px] text-white">
+                <span className="absolute h-[10px] w-[10px] rounded-full bg-[#41D4A8]"></span>
                 <span className="pl-[20px]">{task.description}</span>
               </p>
             </li>
@@ -121,10 +119,10 @@ const Column = ({ state, color, data }) => {
           data?.map((task, index) => (
             <li
               key={index}
-              className="bg-[#FFFFFF] p-[16px] rounded-[12px] mb-[12px] duration-300 hover:border-[1px] hover:border-[#FE7F26]"
+              className="mb-[12px] rounded-[12px] border border-white/10 bg-white/5 p-[16px] duration-300 hover:border-[#FE7F26]"
             >
               <div className="flex justify-between mb-[8px]">
-                <div className="text-[12px]">
+                <div className="text-[12px] text-white/80">
                   {task.speciality} |{" "}
                   <span className="text-[#FE7F26]">{task.importance}</span>
                 </div>
@@ -132,17 +130,23 @@ const Column = ({ state, color, data }) => {
                   {task?.employes?.length > 0 && (
                     <Image
                       src={add}
+                      alt="Assigned"
                       className="w-[26px] h-[26px] rounded-[50%]"
                     />
                   )}
                 </div>
               </div>
-              <p className="text-[15px] flex items-center">
-                <span className="absolute w-[10px] h-[10px] bg-[#FC1414] rounded-[50%]"></span>
+              <p className="flex items-center text-[15px] text-white">
+                <span className="absolute h-[10px] w-[10px] rounded-full bg-[#FC1414]"></span>
                 <span className="pl-[20px]">{task.description}</span>
               </p>
             </li>
           ))}
+        {data?.length === 0 && (
+          <li className="rounded-xl border border-white/10 bg-white/5 p-4 text-center text-white/60">
+            No items
+          </li>
+        )}
       </ul>
     </div>
   );
